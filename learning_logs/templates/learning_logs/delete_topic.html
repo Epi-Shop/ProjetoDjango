@@ -1,0 +1,14 @@
+{% extends 'learning_logs/base.html' %}
+
+{% block content %}
+    <p>Você está certo que deseja excluir o tópico? "{{ topic }}"?</p>
+
+    <form action="{% url 'delete_topic' topic.id %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button name="submit">Excluir</button>
+    </form>
+
+    <a href="{% url 'topics' %}">Voltar para tópicos</a>
+{% endblock content %}
+
